@@ -94,7 +94,7 @@ class Sprite extends object{
     update(updateX,updateY){
         if(!this.visible){return}
         ctx.scale(this.scaleX,this.scaleY)
-        ctx.drawImage(this.img,this.x+updateX,this.y+updateY)
+        ctx.drawImage(this.img,(this.x+updateX)/this.scaleX,(this.y+updateY)/this.scaleY)
         ctx.scale(1/this.scaleX,1/this.scaleY)
     }
 }

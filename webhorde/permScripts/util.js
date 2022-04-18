@@ -1,4 +1,5 @@
-
+//this stores variables for use
+var stored={}
 //just here to make some things a bit easier on me to do
 
 function buildScene(json=""){
@@ -22,7 +23,7 @@ function objectAsJSON(object){
         for(const child of object.children){childReplacement.push(objectAsJSON(child))}
         object.children=childReplacement
     }
-    object.type=object.constructor.name
+    object.type=object.constructor.name.toLowerCase()
     return object
     
 }
@@ -34,7 +35,7 @@ function loadObject(objData){
     switch(objData.type){
         case "object":return applyValues(new object(),objData);break
         case "text":return applyValues(new text(),objData);break
-
+        case "multilinetext":return applyValues(new MultiLineText(),objData);break
 
     }
 
