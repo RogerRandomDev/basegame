@@ -1,16 +1,6 @@
 
 //just here to make some things a bit easier on me to do
 
-function addChild(obj){root.addChild(obj)}
-
-function changeScene(nscene="title"){
-//    root.children=[]
-    for(const script of sceneScripts){scriptHolder.removeChild(script)}
-    addScript("../scenes/"+nscene)
-    
-}
-
-
 function buildScene(json=""){
     //fetches then builds the scene from it
     let data=json
@@ -52,6 +42,10 @@ function loadObject(objData){
 
 function applyValues(object,data){
     for(const [key,value] of Object.entries(data)){
+        if(key=="color"){
+            let color=new Color(value.r,value.g,value.b)
+            value=color
+        }
         if(key=="children"){
             let n_children=[]
             for(const child of value){
@@ -68,3 +62,4 @@ function applyValues(object,data){
     
     return object
 }
+addPermScript("render")
